@@ -255,7 +255,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, AVSpeechSynthesizerDe
             
         }
         else if (speechRunning){
-            // TODO Aditya: close any speech process
             Pause()
             speechRunning = false
         }
@@ -278,4 +277,117 @@ class ViewController: UIViewController, ARSCNViewDelegate, AVSpeechSynthesizerDe
         // show scan view
         scanView.isHidden = false
     }
+    @IBAction func speechPressed(_ sender: UIButton) {
+        // hide speech and ar buttons
+        speechButton.isUserInteractionEnabled = false
+        speechButton.isHidden = true
+        arButton.isUserInteractionEnabled = false
+        arButton.isHidden = true
+        
+        //reveal cancel button
+        cancelButton.isHidden = false
+        cancelButton.isUserInteractionEnabled = true
+        
+        // hide scan view
+        scanView.isHidden = true
+        
+        speechRunning = true
+        
+        let screenShot = snapshot(of: scanView.frame)!
+        //UIImageWriteToSavedPhotosAlbum(screenShot, self, nil, nil)
+        // Get the CGImage on which to perform requests.
+        guard let cgImage = screenShot.cgImage else { return }
+
+        // Create a new image-request handler.
+        let requestHandler = VNImageRequestHandler(cgImage: cgImage)
+
+        // Create a new request to recognize text.
+        let request = VNRecognizeTextRequest(completionHandler: recognizeTextHandler)
+
+        do {
+            // Perform the text-recognition request.
+            try requestHandler.perform([request])
+        } catch {
+            print("Unable to perform the requests: \(error).")
+        }
+        
+    }
+    @IBAction func arPress(_ sender: UIButton) {
+        // hide speech and ar buttons
+        speechButton.isUserInteractionEnabled = false
+        speechButton.isHidden = true
+        arButton.isUserInteractionEnabled = false
+        arButton.isHidden = true
+        
+        // disable pinch gesture
+        //TODO:
+        
+        //reveal cancel button
+        cancelButton.isHidden = false
+        cancelButton.isUserInteractionEnabled = true
+        
+        // hide scan view
+        scanView.isHidden = true
+        
+        arRunning = true
+        
+        let screenShot = snapshot(of: scanView.frame)!
+        //UIImageWriteToSavedPhotosAlbum(screenShot, self, nil, nil)
+        // Get the CGImage on which to perform requests.
+        guard let cgImage = screenShot.cgImage else { return }
+
+        // Create a new image-request handler.
+        let requestHandler = VNImageRequestHandler(cgImage: cgImage)
+
+        // Create a new request to recognize text.
+        let request = VNRecognizeTextRequest(completionHandler: recognizeTextHandler)
+
+        do {
+            // Perform the text-recognition request.
+            try requestHandler.perform([request])
+        } catch {
+            print("Unable to perform the requests: \(error).")
+        }
+    }
+    
+    func recognizeTextHandler(request: VNRequest, error: Error?) {
+        guard let observations =
+                request.results as? [VNRecognizedTextObservation] else {
+            return
+        }
+        let recognizedStrings = observations.compactMap { observation in
+            // Return the string of the top VNRecognizedText instance.
+            return observation.topCandidates(1).first?.string
+        }
+        
+        print(recognizedStrings)
+        self.message = recognizedStrings
+        
+        if(arRunning){
+            // increment AR_reads
+            incrementARReads()
+            
+            // detect AR plane
+            configuration.planeDetection = .horizontal
+            sceneView.session.run(configuration)
+            
+            guard message.indices.count != 0 else {
+                SCLAlertView().showWarning("Invalid Writing", subTitle: "Unable to recognize. Please try again.")
+                return
+            }
+            
+            // retrieve AR model
+            retrieveARModelDirectly(named: message[0])  // only 1st word
+            
+        }
+        else if(speechRunning){
+            // increment speech_reads
+            incrementSpeechReads()
+            
+            Start()
+        }
+        
+    }
 }
+
+
