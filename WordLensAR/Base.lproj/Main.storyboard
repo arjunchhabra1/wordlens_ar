@@ -121,7 +121,7 @@
         <!--Writing View Controller-->
         <scene sceneID="4Nt-9m-h7I">
             <objects>
-                <viewController id="KGI-AL-vnl" customClass="WritingViewController" customModule="WordLensAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="KGI-AL-vnl" customClass="WritingViewController" customModule="WordLensAR" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IhQ-TD-B1L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -200,7 +200,7 @@
         <!--Analyze View Controller-->
         <scene sceneID="Xfb-0q-vwH">
             <objects>
-                <viewController id="Oh6-ar-lvv" customClass="AnalyzeViewController" customModule="DyslexiAR_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Oh6-ar-lvv" customClass="AnalyzeViewController" customModule="WordLensAR" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pyx-G6-Wdp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -233,6 +233,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20W-dW-n6M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="216" y="678"/>
+        </scene>
+        <!--Hosting Controller-->
+        <scene sceneID="1Uh-tk-oKN">
+            <objects>
+                <hostingController id="dcV-hc-P9E" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rmA-Sn-QtN"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BUk-Jq-yDy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1187" y="736"/>
         </scene>
     </scenes>
     <resources>
