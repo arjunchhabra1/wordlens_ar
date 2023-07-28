@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DCA56F8A2A743167008A8480 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA56F892A743167008A8480 /* Entry.swift */; };
 		DCA56F8C2A743193008A8480 /* Echo3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA56F8B2A743193008A8480 /* Echo3D.swift */; };
+		DCA56F8E2A744596008A8480 /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA56F8D2A744596008A8480 /* WritingViewController.swift */; };
 		DCC445DC2A7368EF001D69C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC445DB2A7368EF001D69C9 /* AppDelegate.swift */; };
 		DCC445DE2A7368EF001D69C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC445DD2A7368EF001D69C9 /* SceneDelegate.swift */; };
 		DCC445E02A7368EF001D69C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC445DF2A7368EF001D69C9 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		DCA56F892A743167008A8480 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		DCA56F8B2A743193008A8480 /* Echo3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Echo3D.swift; sourceTree = "<group>"; };
+		DCA56F8D2A744596008A8480 /* WritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewController.swift; sourceTree = "<group>"; };
 		DCC445D82A7368EF001D69C9 /* WordLensAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordLensAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC445DB2A7368EF001D69C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCC445DD2A7368EF001D69C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				DCC445DF2A7368EF001D69C9 /* ViewController.swift */,
 				DCA56F892A743167008A8480 /* Entry.swift */,
 				DCA56F8B2A743193008A8480 /* Echo3D.swift */,
+				DCA56F8D2A744596008A8480 /* WritingViewController.swift */,
 				DCC445E12A7368EF001D69C9 /* Main.storyboard */,
 				DCC445E42A7368F1001D69C9 /* Assets.xcassets */,
 				DCC445E62A7368F1001D69C9 /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCA56F8A2A743167008A8480 /* Entry.swift in Sources */,
+				DCA56F8E2A744596008A8480 /* WritingViewController.swift in Sources */,
 				DCC445E02A7368EF001D69C9 /* ViewController.swift in Sources */,
 				DCC445DC2A7368EF001D69C9 /* AppDelegate.swift in Sources */,
 				DCA56F8C2A743193008A8480 /* Echo3D.swift in Sources */,

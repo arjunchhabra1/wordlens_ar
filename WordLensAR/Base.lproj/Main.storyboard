@@ -118,8 +118,88 @@
             </objects>
             <point key="canvasLocation" x="233" y="6"/>
         </scene>
+        <!--Writing View Controller-->
+        <scene sceneID="4Nt-9m-h7I">
+            <objects>
+                <viewController id="KGI-AL-vnl" customClass="WritingViewController" customModule="DyslexiAR_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IhQ-TD-B1L">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rcb-gs-vhD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </arscnView>
+                            <imageView clipsSubviews="YES" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zpf-LZ-CC6">
+                                <rect key="frame" x="94" y="283" width="227" height="106"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.41176470590000003" green="0.75686274509999996" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jv0-dX-ri2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.098039215690000001" green="0.4549019608" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yr-xA-zuL">
+                                <rect key="frame" x="20" y="53" width="150" height="35"/>
+                                <color key="backgroundColor" red="0.81960784310000001" green="0.90196078430000004" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="LcW-tg-72I"/>
+                                    <constraint firstAttribute="width" constant="150" id="ToY-P2-deR" userLabel="width = 93"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="300"/>
+                                <color key="tintColor" red="0.0" green="0.41960784309999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="doc.text.fill.viewfinder" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
+                                </state>
+                                <connections>
+                                    <action selector="scanPressed:" destination="KGI-AL-vnl" eventType="touchUpInside" id="qj8-AV-ZTG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4w2-g7-Ra0">
+                                <rect key="frame" x="244" y="53" width="150" height="35"/>
+                                <color key="backgroundColor" red="0.81960784310000001" green="0.90196078430000004" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="84w-fO-6sk"/>
+                                    <constraint firstAttribute="width" constant="150" id="gUK-nk-gU2" userLabel="width = 93"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.41960784309999999" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="xmark.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelPressed:" destination="KGI-AL-vnl" eventType="touchUpInside" id="83T-QE-QEX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aEZ-1N-qRH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4w2-g7-Ra0" firstAttribute="top" secondItem="aEZ-1N-qRH" secondAttribute="top" constant="5" id="Bgf-mt-t5B"/>
+                            <constraint firstItem="4w2-g7-Ra0" firstAttribute="leading" secondItem="1yr-xA-zuL" secondAttribute="trailing" constant="74" id="Hua-RB-Ycx"/>
+                            <constraint firstItem="1yr-xA-zuL" firstAttribute="top" secondItem="aEZ-1N-qRH" secondAttribute="top" constant="5" id="P3V-c6-DTx"/>
+                            <constraint firstItem="1yr-xA-zuL" firstAttribute="leading" secondItem="aEZ-1N-qRH" secondAttribute="leading" constant="20" id="YNb-Mg-XgV"/>
+                            <constraint firstItem="aEZ-1N-qRH" firstAttribute="trailing" secondItem="4w2-g7-Ra0" secondAttribute="trailing" constant="20" id="eJH-nW-5sK"/>
+                            <constraint firstItem="4w2-g7-Ra0" firstAttribute="leading" secondItem="1yr-xA-zuL" secondAttribute="trailing" constant="74" id="ulo-Vy-q9U"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="4w2-g7-Ra0" id="MNh-po-4Ye"/>
+                        <outlet property="scanView" destination="zpf-LZ-CC6" id="LFW-qm-xmz"/>
+                        <outlet property="sceneView" destination="rcb-gs-vhD" id="2Yn-zD-RfB"/>
+                        <outlet property="writingButton" destination="1yr-xA-zuL" id="4vM-Ls-XZC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2n8-V9-PVv" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1036" y="5"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="doc.text.fill.viewfinder" catalog="system" width="128" height="115"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="128" height="125"/>
         <image name="volume.3.fill" catalog="system" width="128" height="84"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
