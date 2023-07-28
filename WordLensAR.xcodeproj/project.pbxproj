@@ -16,6 +16,8 @@
 		DCA56F982A746778008A8480 /* NewSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA56F972A746778008A8480 /* NewSwiftUI.swift */; };
 		DCA56F9A2A7467C3008A8480 /* ChartMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA56F992A7467C3008A8480 /* ChartMockData.swift */; };
 		DCA56F9C2A746DF3008A8480 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA56F9B2A746DF3008A8480 /* OnboardingViewController.swift */; };
+		DCA56F9E2A74864E008A8480 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DCA56F9D2A74864E008A8480 /* Podfile */; };
+		DCA56FA02A74870B008A8480 /* dictionary.txt in Resources */ = {isa = PBXBuildFile; fileRef = DCA56F9F2A74870B008A8480 /* dictionary.txt */; };
 		DCC445DC2A7368EF001D69C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC445DB2A7368EF001D69C9 /* AppDelegate.swift */; };
 		DCC445DE2A7368EF001D69C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC445DD2A7368EF001D69C9 /* SceneDelegate.swift */; };
 		DCC445E02A7368EF001D69C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC445DF2A7368EF001D69C9 /* ViewController.swift */; };
@@ -36,6 +38,8 @@
 		DCA56F972A746778008A8480 /* NewSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSwiftUI.swift; sourceTree = "<group>"; };
 		DCA56F992A7467C3008A8480 /* ChartMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartMockData.swift; sourceTree = "<group>"; };
 		DCA56F9B2A746DF3008A8480 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		DCA56F9D2A74864E008A8480 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		DCA56F9F2A74870B008A8480 /* dictionary.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dictionary.txt; sourceTree = "<group>"; };
 		DCC445D82A7368EF001D69C9 /* WordLensAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordLensAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC445DB2A7368EF001D69C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCC445DD2A7368EF001D69C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 			children = (
 				DCC445DB2A7368EF001D69C9 /* AppDelegate.swift */,
 				DCC445DD2A7368EF001D69C9 /* SceneDelegate.swift */,
+				DCA56F9D2A74864E008A8480 /* Podfile */,
+				DCA56F9F2A74870B008A8480 /* dictionary.txt */,
 				DCC445DF2A7368EF001D69C9 /* ViewController.swift */,
 				DCA56F902A74527C008A8480 /* autocorrect.m */,
 				DCA56F922A7452B0008A8480 /* autocorrect.h */,
@@ -159,6 +165,8 @@
 			files = (
 				DCC445E82A7368F1001D69C9 /* LaunchScreen.storyboard in Resources */,
 				DCC445E52A7368F1001D69C9 /* Assets.xcassets in Resources */,
+				DCA56F9E2A74864E008A8480 /* Podfile in Resources */,
+				DCA56FA02A74870B008A8480 /* dictionary.txt in Resources */,
 				DCC445E32A7368EF001D69C9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
