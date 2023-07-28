@@ -11,6 +11,7 @@
 		DCA56F8C2A743193008A8480 /* Echo3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA56F8B2A743193008A8480 /* Echo3D.swift */; };
 		DCA56F8E2A744596008A8480 /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA56F8D2A744596008A8480 /* WritingViewController.swift */; };
 		DCA56F912A74527C008A8480 /* autocorrect.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA56F902A74527C008A8480 /* autocorrect.m */; };
+		DCA56F942A745444008A8480 /* AutoCorrectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA56F932A745444008A8480 /* AutoCorrectViewController.swift */; };
 		DCC445DC2A7368EF001D69C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC445DB2A7368EF001D69C9 /* AppDelegate.swift */; };
 		DCC445DE2A7368EF001D69C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC445DD2A7368EF001D69C9 /* SceneDelegate.swift */; };
 		DCC445E02A7368EF001D69C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC445DF2A7368EF001D69C9 /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 		DCA56F8F2A74527B008A8480 /* WordLensAR-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WordLensAR-Bridging-Header.h"; sourceTree = "<group>"; };
 		DCA56F902A74527C008A8480 /* autocorrect.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = autocorrect.m; sourceTree = "<group>"; };
 		DCA56F922A7452B0008A8480 /* autocorrect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = autocorrect.h; sourceTree = "<group>"; };
+		DCA56F932A745444008A8480 /* AutoCorrectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCorrectViewController.swift; sourceTree = "<group>"; };
 		DCC445D82A7368EF001D69C9 /* WordLensAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordLensAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC445DB2A7368EF001D69C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCC445DD2A7368EF001D69C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				DCC445E42A7368F1001D69C9 /* Assets.xcassets */,
 				DCC445E62A7368F1001D69C9 /* LaunchScreen.storyboard */,
 				DCA56F8F2A74527B008A8480 /* WordLensAR-Bridging-Header.h */,
+				DCA56F932A745444008A8480 /* AutoCorrectViewController.swift */,
 				DCC445E92A7368F1001D69C9 /* Info.plist */,
 			);
 			path = WordLensAR;
@@ -159,6 +162,7 @@
 				DCA56F8E2A744596008A8480 /* WritingViewController.swift in Sources */,
 				DCA56F912A74527C008A8480 /* autocorrect.m in Sources */,
 				DCC445E02A7368EF001D69C9 /* ViewController.swift in Sources */,
+				DCA56F942A745444008A8480 /* AutoCorrectViewController.swift in Sources */,
 				DCC445DC2A7368EF001D69C9 /* AppDelegate.swift in Sources */,
 				DCA56F8C2A743193008A8480 /* Echo3D.swift in Sources */,
 				DCC445DE2A7368EF001D69C9 /* SceneDelegate.swift in Sources */,
