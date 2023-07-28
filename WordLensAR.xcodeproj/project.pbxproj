@@ -10,6 +10,7 @@
 		DCA56F8A2A743167008A8480 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA56F892A743167008A8480 /* Entry.swift */; };
 		DCA56F8C2A743193008A8480 /* Echo3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA56F8B2A743193008A8480 /* Echo3D.swift */; };
 		DCA56F8E2A744596008A8480 /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA56F8D2A744596008A8480 /* WritingViewController.swift */; };
+		DCA56F912A74527C008A8480 /* autocorrect.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA56F902A74527C008A8480 /* autocorrect.m */; };
 		DCC445DC2A7368EF001D69C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC445DB2A7368EF001D69C9 /* AppDelegate.swift */; };
 		DCC445DE2A7368EF001D69C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC445DD2A7368EF001D69C9 /* SceneDelegate.swift */; };
 		DCC445E02A7368EF001D69C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC445DF2A7368EF001D69C9 /* ViewController.swift */; };
@@ -22,6 +23,9 @@
 		DCA56F892A743167008A8480 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		DCA56F8B2A743193008A8480 /* Echo3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Echo3D.swift; sourceTree = "<group>"; };
 		DCA56F8D2A744596008A8480 /* WritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewController.swift; sourceTree = "<group>"; };
+		DCA56F8F2A74527B008A8480 /* WordLensAR-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WordLensAR-Bridging-Header.h"; sourceTree = "<group>"; };
+		DCA56F902A74527C008A8480 /* autocorrect.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = autocorrect.m; sourceTree = "<group>"; };
+		DCA56F922A7452B0008A8480 /* autocorrect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = autocorrect.h; sourceTree = "<group>"; };
 		DCC445D82A7368EF001D69C9 /* WordLensAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordLensAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC445DB2A7368EF001D69C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCC445DD2A7368EF001D69C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,12 +69,15 @@
 				DCC445DB2A7368EF001D69C9 /* AppDelegate.swift */,
 				DCC445DD2A7368EF001D69C9 /* SceneDelegate.swift */,
 				DCC445DF2A7368EF001D69C9 /* ViewController.swift */,
+				DCA56F902A74527C008A8480 /* autocorrect.m */,
+				DCA56F922A7452B0008A8480 /* autocorrect.h */,
 				DCA56F892A743167008A8480 /* Entry.swift */,
 				DCA56F8B2A743193008A8480 /* Echo3D.swift */,
 				DCA56F8D2A744596008A8480 /* WritingViewController.swift */,
 				DCC445E12A7368EF001D69C9 /* Main.storyboard */,
 				DCC445E42A7368F1001D69C9 /* Assets.xcassets */,
 				DCC445E62A7368F1001D69C9 /* LaunchScreen.storyboard */,
+				DCA56F8F2A74527B008A8480 /* WordLensAR-Bridging-Header.h */,
 				DCC445E92A7368F1001D69C9 /* Info.plist */,
 			);
 			path = WordLensAR;
@@ -108,6 +115,7 @@
 				TargetAttributes = {
 					DCC445D72A7368EF001D69C9 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 					};
 				};
 			};
@@ -149,6 +157,7 @@
 			files = (
 				DCA56F8A2A743167008A8480 /* Entry.swift in Sources */,
 				DCA56F8E2A744596008A8480 /* WritingViewController.swift in Sources */,
+				DCA56F912A74527C008A8480 /* autocorrect.m in Sources */,
 				DCC445E02A7368EF001D69C9 /* ViewController.swift in Sources */,
 				DCC445DC2A7368EF001D69C9 /* AppDelegate.swift in Sources */,
 				DCA56F8C2A743193008A8480 /* Echo3D.swift in Sources */,
@@ -297,6 +306,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A98NNXC69K;
@@ -315,6 +325,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "arjunchhabra678-gmail.com.WordLensAR";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "WordLensAR-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -325,6 +337,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A98NNXC69K;
@@ -343,6 +356,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "arjunchhabra678-gmail.com.WordLensAR";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "WordLensAR-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
