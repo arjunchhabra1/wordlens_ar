@@ -10,9 +10,9 @@ import SceneKit
 import ARKit
 import SpriteKit
 import AVFoundation
-//import Firebase
-//import FirebaseFirestore
-//import SCLAlertView
+import Firebase
+import FirebaseFirestore
+import SCLAlertView
 
 class ViewController: UIViewController, ARSCNViewDelegate, AVSpeechSynthesizerDelegate{
     
@@ -62,7 +62,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, AVSpeechSynthesizerDe
         sceneView.autoenablesDefaultLighting = true
         sceneView.automaticallyUpdatesLighting = true
         
-        //  e = Echo3D()
+        e = Echo3D()
         
         // round corners
         scanView.layer.cornerRadius = 15
@@ -388,6 +388,315 @@ class ViewController: UIViewController, ARSCNViewDelegate, AVSpeechSynthesizerDe
         }
         
     }
+    
+    func incrementARReads(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yy"
+         
+        let date = Date()
+        
+        let dateString = dateFormatter.string(from: date)
+        
+        let db = Firestore.firestore()
+        let docRef = db.collection("Data").document(dateString)
+        
+        //get user document
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                //check if AR_reads field exists
+                if var AR_reads =  document.get("AR_reads") as? Int{
+                    //increment AR_reads
+                    AR_reads+=1
+                    //push to firebase
+                    document.reference.updateData([
+                    "AR_reads": AR_reads
+                    ])
+                    print("Updated AR_Reads in firebase")
+                } else{
+                    print("Error updating AR_Reads in firebase!")
+                }
+            } else {
+                print("Document does not exist: creating new date document")
+                //create new document for today's date
+                // Add a new document in collection
+                db.collection("Data").document(dateString).setData([
+                    "AR_reads": 1,
+                    "speech_reads": 0,
+                    "written_correct": 0 ,
+                    "written_incorrect" : 0,
+                ]) { err in
+                    if let err = err {
+                        print("Error writing new document: \(err)")
+                    } else {
+                        print("New document successfully written!")
+                    }
+                }
+            }
+        }
+    }
+    
+    func incrementSpeechReads(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yy"
+         
+        let date = Date()
+        
+        let dateString = dateFormatter.string(from: date)
+        
+        let db = Firestore.firestore()
+        let docRef = db.collection("Data").document(dateString)
+        
+        //get user document
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                //check if speech_reads field exists
+                if var speech_reads =  document.get("speech_reads") as? Int{
+                    //increment speech_reads
+                    speech_reads+=1
+                    //push to firebase
+                    document.reference.updateData([
+                    "speech_reads": speech_reads
+                    ])
+                    print("Updated speech_reads in firebase")
+                } else{
+                    print("Error updating speech_reads in firebase!")
+                }
+            } else {
+                print("Document does not exist: creating new date document")
+                //create new document for today's date
+                // Add a new document in collection
+                db.collection("Data").document(dateString).setData([
+                    "AR_reads": 0,
+                    "speech_reads": 1,
+                    "written_correct": 0 ,
+                    "written_incorrect" : 0,
+                ]) { err in
+                    if let err = err {
+                        print("Error writing new document: \(err)")
+                    } else {
+                        print("New document successfully written!")
+                    }
+                }
+            }
+        }
+    }
+    
+    func retrieveARModelDirectly(named word: String){
+        e.loadSceneFromFilename(filename: "\(word).glb") {
+            (selectedScene) in
+            //make sure the scene has a scene node
+            guard let selectedNode = selectedScene.rootNode.childNodes.first else {return}
+            arNode = selectedNode
+        }
+    }
+    func retrieveARModelID(named word: String){
+        //e.loadSceneFromEntryID(entryID: "9b677aec-5859-4459-a51e-42d6de0ea4bf"){
+//        e.loadSceneFromFilename(filename: "\(word).glb") {
+//            (selectedScene) in
+//            //make sure the scene has a scene node
+//            guard let selectedNode = selectedScene.rootNode.childNodes.first else {return}
+//            arNode = selectedNode
+//        }
+//        return
+        // retrieve model id from firebase
+        let db = Firestore.firestore()
+        let docRef = db.collection("echo3DModels").document(word)
+        //get location document
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                if var identifier = document.get("identifier") as? String{
+                    // retrieve model from echo3D
+                    print("retrieved \(word) id from firebase")
+                    self.retrieveEcho3DModel(with: identifier)
+                }
+           }
+           else {
+               print("Document does not exist. \(word) model not downloaded")
+           }
+       }
+    }
+    func retrieveEcho3DModel(with identifier: String){
+        //load scene (3d model) from echo3D using the entry id
+        e.loadSceneFromEntryID(entryID: identifier) { (selectedScene) in
+            //make sure the scene has a scene node
+            guard let selectedNode = selectedScene.rootNode.childNodes.first else {return}
+            arNode = selectedNode
+//            //get the translation, or where we will be adding our node
+//            let translation = SCNVector3Make(myPlaneNode.worldTransform.columns.3.x, myPlaneNode.worldTransform.columns.3.y, myPlaneNode.worldTransform.columns.3.z
+//            let y = translation.y
+//            let z = translation.z
+//
+//            //set the position of the node
+//            selectedNode.position = SCNVector3(x,y,z)
+//
+//            //scale down the node using our scale constants
+//            let action = SCNAction.scale(by: 0.005, duration: 0.3)
+//
+//            selectedNode.runAction(action)
+//
+//
+//            //add the node to our scene
+//            sceneView.scene.rootNode.addChildNode(selectedNode)
+        }
+        
+    }
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+        //
+    }
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        speechSynthesizer.stopSpeaking(at: .word)
+        Pause()
+        
+        count+=1
+        if count < message.count {
+            let speechUtterance = AVSpeechUtterance(string: message[count])
+            DispatchQueue.main.async {
+                self.speechSynthesizer.speak(speechUtterance)
+            }
+        }else{
+            count = 0
+//            speechRunning = false
+            //speakBtn.isSelected = false
+        }
+    }
+    
+    func Start(){
+        if speechSynthesizer.isSpeaking{
+            speechSynthesizer.stopSpeaking(at: .immediate)
+        }else{
+            guard message.indices.count != 0 else {
+                SCLAlertView().showWarning("Invalid Writing", subTitle: "Unable to recognize. Please try again.")
+                return Pause()
+            }
+            
+            let speechUtterance = AVSpeechUtterance(string: (message[count]))
+            DispatchQueue.main.async {
+                self.speechSynthesizer.speak(speechUtterance)
+            }
+        }
+    }
+    
+
+    // MARK: - ARSCNViewDelegate
+    
+/*
+    // Override to create and configure nodes for anchors added to the view's session.
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        let node = SCNNode()
+     
+        return node
+    }
+*/
+    
+    func session(_ session: ARSession, didFailWithError error: Error) {
+        // Present an error message to the user
+        
+    }
+    
+    func sessionWasInterrupted(_ session: ARSession) {
+        // Inform the user that the session has been interrupted, for example, by presenting an overlay
+        
+    }
+    
+    func sessionInterruptionEnded(_ session: ARSession) {
+        // Reset tracking and/or remove existing anchors if consistent tracking is required
+        
+    }
+    private func addPinchGesture() {
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:)))
+        //self.scanView.addGestureRecognizer(pinchGesture)
+        let pinchGesture2 = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch2(_:)))
+        self.sceneView.addGestureRecognizer(pinchGesture2)
+    }
+    
+    @objc func handlePinch(_ sender: UIPinchGestureRecognizer) {
+        if sender.state == .began || sender.state == .changed {
+            let mode = _mode(sender)
+            if(mode=="H"){
+                sender.view?.transform = (sender.view?.transform.scaledBy(x: sender.scale, y: 1))!
+                 sender.scale = 1.0
+            }
+            else if(mode=="V"){
+                sender.view?.transform = (sender.view?.transform.scaledBy(x: 1, y: sender.scale))!
+                 sender.scale = 1.0
+            }
+            else{
+                sender.view?.transform = (sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale))!
+                 sender.scale = 1.0
+            }
+        }}
+    @objc func handlePinch2(_ sender: UIPinchGestureRecognizer) {
+        if sender.state == .began || sender.state == .changed {
+            let mode = _mode(sender)
+            if(mode=="H"){
+                scanView.transform = (scanView.transform.scaledBy(x: sender.scale
+                                                                  , y: 1))
+                
+                //let pinchScaleX = Float(sender.scale) * planeNode.scale.x
+                //planeNode.scale = SCNVector3(pinchScaleX, planeNode.scale.y, planeNode.scale.z)
+                sender.scale = 1.0
+                
+            }
+            else if(mode=="V"){
+                scanView.transform = (scanView.transform.scaledBy(x: 1, y: sender.scale))
+                
+                //let pinchScaleY = Float(sender.scale) * planeNode.scale.y
+                //planeNode.scale = SCNVector3(planeNode.scale.x, pinchScaleY, planeNode.scale.z)
+                sender.scale = 1.0
+            }
+            //else{
+                //scanView.transform = (scanView.transform.scaledBy(x: scanView.contentScaleFactor, y: scanView.contentScaleFactor))
+                //scanView.contentScaleFactor = 1.0
+                //scale = 1.0
+            //}
+        }}
+    func _mode(_ sender: UIPinchGestureRecognizer)->String {
+
+        // very important:
+        if sender.numberOfTouches < 2 {
+            print("avoided an obscure crash!!")
+            return ""
+        }
+
+        let A = sender.location(ofTouch: 0, in: self.view)
+        let B = sender.location(ofTouch: 1, in: self.view)
+
+        let xD = abs( A.x - B.x )
+        let yD = abs( A.y - B.y )
+        if (xD == 0) { return "V" }
+        if (yD == 0) { return "H" }
+        let ratio = xD / yD
+        // print(ratio)
+        if (ratio > 1) { return "H" }
+        if (ratio <= 1) { return "V" }
+        return "D"
+    }
+    func snapshot(of rect: CGRect? = nil) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, self.view.isOpaque, 0)
+        self.view.drawHierarchy(in: self.view.bounds, afterScreenUpdates: true)
+        let fullImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        guard let image = fullImage, let rect = rect else { return fullImage }
+        let scale = image.scale
+        let scaledRect = CGRect(x: rect.origin.x * scale, y: rect.origin.y * scale, width: rect.size.width * scale, height: rect.size.height * scale)
+        guard let cgImage = image.cgImage?.cropping(to: scaledRect) else { return nil }
+        return UIImage(cgImage: cgImage, scale: scale, orientation: .up)
+    }
 }
+extension float4x4 {
+    var translation: float3 {
+        let translation = self.columns.3
+        return float3(translation.x, translation.y, translation.z)
+    }
+}
+
+extension UIColor {
+    open class var transparentLightBlue: UIColor {
+        return UIColor(red: 90/255, green: 200/255, blue: 250/255, alpha: 0.50)
+    }
+}
+
 
 
