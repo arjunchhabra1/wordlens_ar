@@ -1,5 +1,5 @@
 
-Instructions for integrating this code into ios app
+Instructions for integrating autocorrect code into ios app
 
 1. Sometime near the launch of the app, call the loadDict function
 2. When calling isAWord() or autocorrect(), make sure the input word is completely lowercase
