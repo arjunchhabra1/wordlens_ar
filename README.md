@@ -1,4 +1,4 @@
-# WordLens AR (DyslexiAR)
+# WordLens AR 
 
 An iOS assistive-reading app for people with dyslexia. Point the camera at printed or handwritten text and WordLens AR reads it aloud, suggests corrections for misspelled words, and shows a 3D model of the word in augmented reality.
 
