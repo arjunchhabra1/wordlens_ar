@@ -1,0 +1,14 @@
+# Xcode user state
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+
+# CocoaPods
+Pods/
+
+# macOS
+.DS_Store
+
+# Local secrets
+GoogleService-Info.plist
